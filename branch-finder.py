@@ -35,8 +35,8 @@ print('Starting...')
 org_branch_url = ('https://api.github.com/repos/%s/%s/branches' %
                   (ORG, '%s'))
 
-org_repos = list(organisation_repos())[13:]
 print('Connected...')
+org_repos = organisation_repos()
 print('Checking repositories...')
 total_repos = len(org_repos)
 repo_count = 0
