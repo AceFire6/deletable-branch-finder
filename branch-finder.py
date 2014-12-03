@@ -1,3 +1,4 @@
+import getpass
 import sys
 
 import requests
@@ -26,7 +27,7 @@ if len(sys.argv) != 3:
 
 USER = sys.argv[1]
 ORG = sys.argv[2]
-PASS = raw_input('Enter your github password:\n')
+PASS = getpass.getpass('Enter your github password:\n')
 AUTH = (USER, PASS)
 NAME = requests.get('https://api.github.com/users/%s' % USER)
 
