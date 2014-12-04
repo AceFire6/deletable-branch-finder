@@ -1,5 +1,5 @@
+import argparse
 import getpass
-import sys
 
 import requests
 
@@ -21,12 +21,17 @@ def organisation_repos(url=None):
     return repositories
 
 
-if len(sys.argv) != 3:
-    print('You need to provide your github username and organisation')
-    sys.exit(2)
+parser = argparse.ArgumentParser(
+    description="Finds all the deletable branches of yours in your organisation"
+                "'s github repositories."
+)
 
-USER = sys.argv[1]
-ORG = sys.argv[2]
+parser.add_argument('username', help='Your github username.')
+parser.add_argument('org', help='Your github organisation.')
+args = parser.parse_args()
+
+USER = args.username
+ORG = args.org
 PASS = getpass.getpass('Enter your github password:\n')
 AUTH = (USER, PASS)
 
